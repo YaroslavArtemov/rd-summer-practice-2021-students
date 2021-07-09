@@ -1,5 +1,7 @@
 # RD summer practice 2021
 
+##Состав команды
+YaroslavArtemov - Артёмов Ярослав, KarinaKucherenko - Кучеренко Карина, EgN1337 - Щенёв Евгений
 ## Работа
 Для отладки можно вписать `debugger` в нужное место кода
 `console.log(a)` - вывод в консоль
