@@ -17,7 +17,7 @@ body{
 	background-color: red;
 	
 }
-.left{
+.police{
 	width:20%;
 	height:77%;
 	float:left;
@@ -25,7 +25,7 @@ body{
 	margin-bottom:5%;
 	margin-top: 2%;
 }
-.right{
+.theaf{
 	width:20%;
 	height:77%;
 	float:right;
@@ -34,7 +34,7 @@ body{
 	margin-bottom:5%;
 	margin-top: 2%;
 }
-.center{
+.map{
 	width:60%;
 	height:70%;
 	background-color: yellow;
@@ -72,4 +72,30 @@ body{
 
 .spacebetweenlines{
 	margin-top: 50%;
+}
+
+.loadingHidden{
+	visibility: hidden;
+}
+
+.loadErrorHidden{
+	visibility: hidden;
+}
+
+.left{
+	width:20%;
+	height:77%;
+	float:left;
+	background-color: orange;
+	margin-bottom:5%;
+	margin-top: 2%;
+}
+.right{
+	width:20%;
+	height:77%;
+	float:right;
+
+	background-color: green;
+	margin-bottom:5%;
+	margin-top: 2%;
 }
