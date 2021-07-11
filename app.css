@@ -4,8 +4,8 @@ body{
 }
 
 .wrapper{
-	width:900px;
-	height:700px;
+	width:800px;
+	height:550px;
 	
 	background-color: lightblue;
 	margin:0 auto;
@@ -19,46 +19,51 @@ body{
 }
 .police{
 	width:20%;
-	height:77%;
+	height:17%;
 	float:left;
 	background-color: orange;
-	margin-bottom:5%;
+	margin-bottom:2%;
 	margin-top: 2%;
 }
 .theaf{
 	width:20%;
-	height:77%;
-	float:right;
+	height:17%;
+	float:left;
 
 	background-color: green;
-	margin-bottom:5%;
-	margin-top: 2%;
+	margin-bottom:2%;
+	margin-top: 20%;
+	margin-left: -20%;
 }
 .map{
 	width:60%;
 	height:70%;
 	background-color: yellow;
 	
-	margin-left:20%;
+	margin-left:22%;
 
 }
 .timer{
-	width:60%;
+	width:63%;
 	height:5%;
 	
 	background-color: white;
 	
 	margin-left:20%;
-	margin-bottom:1%;
-
-
+	margin-bottom:0%;
 }
+
+.timer p{
+	margin-left: 38%;
+}
+
 .bottom{
-	width:100%;
+	margin-left:20%;
+	width:60%;
 	height:10%;
 	background-color: black;
 	margin-bottom:5%;
-	margin-top:1%;
+	margin-top:0%;
 	
 }
 
@@ -67,19 +72,22 @@ body{
 }
 
 .header h2{
-	margin-left: 33%;
+	margin-left: 40%;
 }
 
 .spacebetweenlines{
 	margin-top: 50%;
+	display: none;
 }
 
 .loadingHidden{
 	visibility: hidden;
+	display: none;
 }
 
 .loadErrorHidden{
 	visibility: hidden;
+	display: none;
 }
 
 .left{
