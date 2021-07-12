@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="app.css" />
     <!--  TODO: Раскомментировать при начале работы с сервером -->
-<!--    <script src="modernizr.js"></script>-->
-<!--    <script src="/js/jquery.js"></script>-->
-<!--    <script src="/js/jquery.signalR.js"></script>-->
-<!--    <script src="/js/gameApi.js"></script>-->
+       <script src="modernizr.js"></script>
+       <script src="/js/jquery.js"></script>
+       <script src="/js/jquery.signalR.js"></script>
+        <script src="/js/gameApi.js"></script>
     <title>Игра - Полицейские и Мошенники</title>
 </head>
+
 <body>
-<!-- TODO: Task 0. Построить вёрстку приложения по макету используя для сетки bootstrap -->
-<div class="hidden">
-   <!-- <img id="img_heart"
+    <!-- TODO: Task 0. Построить вёрстку приложения по макету используя для сетки bootstrap -->
+    <div class="hidden">
+        <img id="img_heart"
          src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJzdmdfaGVhcnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9
 yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIH
 g9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4Igp2aWV3Qm94PSIwIDAgM
@@ -84,131 +86,117 @@ TE9IjMiIHgyPSI3IiB5Mj0iMjIiIC8+CjxsaW5lIHgxPSIzIiB5MT0iOCIgeDI9IjciIHkyPSI0
 IiAvPgo8bGluZSB4MT0iMTEiIHkxPSI4IiB4Mj0iNyIgeTI9IjQiIC8+CjxsaW5lIHgxPSIxOCI
 geTE9IjMiIHgyPSIxOCIgeTI9IjIyIiAvPgo8bGluZSB4MT0iMTQiIHkxPSIxNyIgeDI9IjE4Ii
 B5Mj0iMjEiIC8+CjxsaW5lIHgxPSIyMiIgeTE9IjE3IiB4Mj0iMTgiIHkyPSIyMSIgLz4KPC9nP
-go8L3N2Zz4="/> -->
-</div>
+go8L3N2Zz4="/>
+    </div>
 
 
-<div id="header" class="header">
-    <h2 >Полицеские и мошенники</h2>
-</div>
+    <div id="header" class="header">
+        <h2>Полицеские и мошенники</h2>
+    </div>
 
-<div id = "loading" class = "loadingHidden">
-    <h2>Синхронизация...</h2>
-</div>
+    <div id="loading" class="loadingHidden">
+        <h2>Синхронизация...</h2>
+    </div>
 
-<div id = "loadError" class = "loadErrorHidden">
-    <h2>Невозможно загрузить выбранную игру. Вернуться к <a href = "index.html">списку игр</a></h2>
-</div>
-<div id="wrapper" class="wrapper">
-    <div>
-        <div id = "gameCaption">
-            <div id = "gameCaptionName">название карты</div>
-            <div id = "gmaeCaptionStatus">статус игры</div>
-        </div>
-
-        <div id="timer" class="timer">
-            <p> Смена ролей через <span id = "gameTimer">00:00</span></p>
-        </div>
-
-        <div><div id = "team1" class = "police">
-            <div class = "teamPoliceCaption">
-                <span class = "teamName">Team 1</span>
-                <span class = "teamRole">Police</span>
+    <div id="loadError" class="loadErrorHidden">
+        <h2>Невозможно загрузить выбранную игру. Вернуться к <a href="index.html">списку игр</a></h2>
+    </div>
+    <div id="wrapper" class="wrapper">
+        <div>
+            <div id="gameCaption">
+                <div id="gameCaptionName">название карты</div>
+                <div id="gmaeCaptionStatus">статус игры</div>
             </div>
-            <div id = "team1Stats">
-                <div class = "team1Lives">
-                    Жизни:
-                    <span id = team1Lives>3</span>
-                </div>
-                <div class = "team1Coins">
-                    Mонеты:
-                    <span id = "team1Lives">0</span>
+
+            <div id="timer" class="timer">
+                Смена ролей через <span id="gameTimer">00:00</span>
+            </div>
+
+            <div>
+                <div id="team1" class="police">
+                    <div class="teamPoliceCaption">
+                        <span class="teamName">Team 1</span>
+                        <span class="teamRole">Police</span>
+                    </div>
+                    <div id="team1Stats">
+                        <div class="team1Lives">
+                            Жизни:
+                            <span id=team1Lives>3</span>
+                        </div>
+                        <div class="team1Coins">
+                            Mонеты:
+                            <span id="team1Lives">0</span>
+                        </div>
+                    </div>
+
+                    <div id="team1Users">
+                        <span class="playerName">Name</span>
+                        <span calss="playerLives">0</span>
+                        <span class="playerCoins">3</span>
+                        <span class="playerDeths">0</span>
                     </div>
                 </div>
-            <!--</div>
-            <div id = "team1Users">-->
-                <span class = "playerName">Name</span>
-                <span calss = "playerLives">0</span>
-                <span class = "playerCoins">3</span>
-                <span class = "playerDeths">0</span>
             </div>
-        </div>
 
-        
 
-        <div id = "team2" class = "theaf">
-            <div class = "teamTheafCaption">
-                <span class = "teamName">Team 1</span>
-                <span class = "teamRole">Theaf</span>
-            </div>
-            <div id = "team2Stats">
-                <div class = "team2Lives">
-                    Жизни:
-                    <span id = team2Lives>3</span>
+
+            <div id="team2" class="theaf">
+                <div class="teamTheafCaption">
+                    <span class="teamName">Team 1</span>
+                    <span class="teamRole">Theaf</span>
                 </div>
-                <div class = "team2Coins">
-                    Mонеты:
-                    <span id = "team2Coins">0</span>
+                <div id="team2Stats">
+                    <div class="team2Lives">
+                        Жизни:
+                        <span id=team2Lives>3</span>
+                    </div>
+                    <div class="team2Coins">
+                        Mонеты:
+                        <span id="team2Coins">0</span>
                     </div>
                 </div>
-            <!--</div>
-            <div id = "team2Users">-->
-                <span class = "playerName">Name</span>
-                <span calss = "playerLives">0</span>
-                <span class = "playerCoins">3</span>
-                <span class = "playerDeths">0</span>
+
+                <div id="team2Users">
+                    <span class="playerName">Name</span>
+                    <span calss="playerLives">0</span>
+                    <span class="playerCoins">3</span>
+                    <span class="playerDeths">0</span>
+                </div>
             </div>
         </div>
 
-        <div id="map" class="map"> 
-            <canvas id = "gameCanvas"></canvas>
-        </div></div>
-    <!--
-        <div id="right" class="right">
-            <h5>Игра создана</h5>
-            <h5>Игра началась</h5>
-            <h5>Смена ролей</h5> 
+        <div id="map" class="map">
+            <canvas id="gameCanvas"></canvas>
         </div>
+    </div>
 
-        <div id="left" class="left"> 
-            <h3>  Название </h3>
-            <h5>  Очки: </h5>
-            <h5>  Осталось жизней:</h5>
-            <h3>Название </h3>
-            <h5>Очки: </h5>
-            <h5>Осталось жизней:</h5>
-        </div>
-    -->
-
-
-        
     </div>
     <div id="bottom" class="bottom">
-        <button id = "btnGameList">К списку игр..</button>
-        <button id = "btnStart">Начать игру</button>
-        <button id = "btnConnect">Подключиться к игре(случайно)</button>
-        <button id = "btnConnectPolice">Подключиться к полицейским</button>
-        <button id = "btnConnectThief">Подключиться к мошенникам</button>
-        <button id = "btnLeave">Покинуть игру</button>
-        <button id = "btnPause">Пауза</button>
-        <button id = "btnCancel">Прервать игру</button>
+        <button id="btnGameList">К списку игр..</button>
+        <button id="btnStart">Начать игру</button>
+        <button id="btnConnect">Подключиться к игре(случайно)</button>
+        <button id="btnConnectPolice">Подключиться к полицейским</button>
+        <button id="btnConnectThief">Подключиться к мошенникам</button>
+        <button id="btnLeave">Покинуть игру</button>
+        <button id="btnPause">Пауза</button>
+        <button id="btnCancel">Прервать игру</button>
     </div>
-</div>
+    </div>
 
-<!--  TODO: Раскомментировать при начале работы с сервером -->
-<!--<script src="app.js"></script>-->
-<!--<script>-->
-<!--    (function() {-->
-<!--        var gameApi = new GameApi();-->
-<!--        gameApi.questor.on("unauthorized", function () {-->
-<!--            window.location.replace("../login");-->
-<!--        });-->
-<!--        gameApi.questor.login();-->
-<!--        var gameState = new app.game.GameState(gameApi);-->
-<!--        new app.game.GameView($("#game"), $("#loading"), $("#loadError"), gameState);-->
-<!--        gameState.request();-->
-<!--    })();-->
-
-<!--</script>-->
+    <!-- TODO: Раскомментировать при начале работы с сервером -->
+    <script src="app.js"></script>
+    <script>
+        (function () {
+            var gameApi = new GameApi();
+            gameApi.questor.on("unauthorized", function () {
+                window.location.replace("../login");
+            });
+            gameApi.questor.login();
+            var gameState = new app.game.GameState(gameApi);
+            new app.game.GameView($("#game"), $("#loading"), $("#loadError"), gameState);
+            gameState.request();
+        })();
+    </script>
 </body>
+
 </html>
