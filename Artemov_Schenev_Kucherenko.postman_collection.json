@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "d482e14c-5a4e-46b1-a795-9d82c2a33c37",
+		"name": "Artemov_Schenev_Kucherenko",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var rndValue = Math.floor(Math.random() * 100000) + 99999\r",
+							"pm.environment.set(\"rndValueEnv\", rndValue);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code 201\", function (){\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function (){\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.login).to.eql(100);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function (){\r",
+							"    pm.expect(pm.response.text()).to.include(\"st Te\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"login\": \"qwertyuiop1{{rndValue}}\", \r\n\"nativeName\": \"Karina Kucherenko\", \r\n\"password\": \"123456\",\r\n\"confirmPassword\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInformation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/me",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateInformation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function (){\r",
+							"    pm.expect(pm.response.text()).to.include(\"Yaroslav\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var rndValue = Math.floor(Math.random() * 100000) + 99999\r",
+							"pm.environment.set(\"rndValueEnv\", rndValue);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"NativeName\": \"Yaroslav\",\r\n  \"Role\": 1,\r\n  \"OldPassword\": \"idtuihi\",\r\n  \"Password\": \"ihiutdi\",\r\n  \"ConfirmPassword\": \"ihiutdi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/da81f87af9dc493fbf56e16a95e33c07",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"da81f87af9dc493fbf56e16a95e33c07"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInformationAboutUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function (){\r",
+							"    pm.expect(pm.response.text()).to.include(\"a826ba9748c840459e65e201c4b307d1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "a826ba9748c840459e65e201c4b307d1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/a826ba9748c840459e65e201c4b307d1",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"a826ba9748c840459e65e201c4b307d1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All maps",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateGame",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Name\": \"cccccc\",\r\n  \"MapId\": \"5982c4308f164678ac065d97310e41f0\",\r\n  \"SwitchTimeout\": 60000,\r\n  \"StartupTeamLives\": 3,\r\n  \"PoliceSpeed\": 4,\r\n  \"ThiefSpeed\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetGameList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус код 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/games",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInformationAboutGame",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус код 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Game\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(\"9679eb64e58048c3a4fb8c8f3c28358f\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game/9679eb64e58048c3a4fb8c8f3c28358f",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game",
+						"9679eb64e58048c3a4fb8c8f3c28358f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserGames",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус код 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/da81f87af9dc493fbf56e16a95e33c07/maps",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"da81f87af9dc493fbf56e16a95e33c07",
+						"maps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteGame",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус код 202\", function () {\r",
+							"    pm.response.to.have.status(202);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game/e823afc1089041e2abbbb5a6dfd82ae3",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game",
+						"e823afc1089041e2abbbb5a6dfd82ae3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserMaps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function (){\r",
+							"    pm.expect(pm.response.text()).to.include(\"Двадцадка\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAAAILt3H-trItqN3auvTipH6xuoDdFFM7jzvPuUN8YRyUAAAAAAOgAAAAAIAACAAAAAI8X9D4DKrUZJkH-8VIGsLpC4nfAtEK_b2WETXnEzZuBABAADNwtNoO2w5DTIAHtASvI-xB994Y-zlfMik3k0tz6_xIU9MYA9ODACYDDmutt6HARIv6tx-kwn3FPNW4RrNNVdVEt61O4YG3IyCwmAbDR2xzsrhAW2wGeA6uLn_8eVc7ezUiK3Xv3u-_PZpeJD6nY10cYcRUfp46x5ExUWTHvTR1S-pjf8spJ95OU3mw2WH6YzmRp1laK4HEU0eQoeYtePruFyvVapAy89TghvNfs0hIiV89t2KfmOHGxOidDLqEIewA6Z7DHLYast0AXtafEs-8lo8wkbJnh_PUKhth86U6jNbIcWQQiUS1q5sNi1LBPPySV_XJtfhR_EyRF0eegs-6kKQD65L9FTsc_O6ELOe-EAAAAAmDgqWQSK9Nu-mYanXMpdeZfHRZMx9TfB2W2pWKVVzC2WC-dmlTdAzVUv3LE7sQb7eNaSDR4Clt4wNovaX_VOV",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "da81f87af9dc493fbf56e16a95e33c07",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/da81f87af9dc493fbf56e16a95e33c07/maps",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"da81f87af9dc493fbf56e16a95e33c07",
+						"maps"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
